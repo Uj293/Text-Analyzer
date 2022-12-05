@@ -6,8 +6,9 @@ import React, { useState } from 'react';
 import Alert from './components/Alert';
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
+  Link
 } from "react-router-dom";
 
  
@@ -53,16 +54,14 @@ function App() {
     <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} />
     <Alert alert={alert}/>
     <div className="container my-3">
-    <Switch>
+    <Routes>
     {/* /users --> Component 1
         /users/home --> Component 2 */}
-          <Route exact path="/about">
-            <About />
+          <Route path="/about" element= {<About />}>
           </Route>
-          <Route exact path="/">
-            <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>
+          <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>}>
           </Route>
-    </Switch>
+    </Routes>
     </div>
     </Router>
     </> 
